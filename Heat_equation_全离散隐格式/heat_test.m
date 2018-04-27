@@ -33,7 +33,7 @@ saveas(gcf,'最终的计算网格','jpg')
 %%
 gcf = figure(3);
 subplot(1,2,1)
-showsolution(node,elem,u{101})
+showsolution(node,elem,u{1001})
 title('时间0.1后的数值解')
 
 subplot(1,2,2)
