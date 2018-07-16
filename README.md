@@ -1,2 +1,2 @@
 # Finite-Element-Methods
-利用MATLAB或python解有限元方程组
+利用MATLAB;python;c++解有限元方程组
