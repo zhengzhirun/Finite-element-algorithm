@@ -8,3 +8,17 @@ g++ -std=c++0x main.o Matrix.o -o main
 运行成功后,会将计算结果存储在Results.txt中
 
 最后运行 Read_mesh_result.m(读取数据文件Results.txt并作图).
+
+
+关于Eigen的使用以及安装:
+Eigen官网下载:http://eigen.tuxfamily.org/index.php?title=Main_Page#Documentation
+Eigen说明文档: http://eigen.tuxfamily.org/dox/GettingStarted.html
+
+sudo tar -xvjf ~/3.3.0.tar.bz2  -C /usr/local/include
+将~/m目录下的3.3.0.tar.bz2解压缩到 /usr/local/include
+
+sudo mv /usr/local/include/eigen-eigen-b3f3d4950030 /usr/local/include/eigen3
+将文件 eigen-eigen-b3f3d4950030 修改名字为 eigen3
+
+sudo cp -r /usr/local/include/eigen3/Eigen   /usr/local/include
+将eigen3中的Eigen复制到 /usr/local/include
