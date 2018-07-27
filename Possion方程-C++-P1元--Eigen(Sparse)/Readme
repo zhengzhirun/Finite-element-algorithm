@@ -1,0 +1,10 @@
+先用Write_mesh.m 生成网格信息并且存储在Trimesh.txt中.
+
+然后编译C++文件:
+g++ -std=c++0x -c Matrix.cpp
+g++ -std=c++0x -c main.cpp
+g++ -std=c++0x main.o Matrix.o -o main
+./main
+运行成功后,会将计算结果存储在Results.txt中
+
+最后运行 Read_mesh_result.m(读取数据文件Results.txt并作图).
