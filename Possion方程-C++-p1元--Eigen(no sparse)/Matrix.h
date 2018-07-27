@@ -4,6 +4,8 @@
 #include <cmath>
 #include <fstream>
 #include <Eigen/Dense>  // 线性代数库
+#include <Eigen/IterativeLinearSolvers> // 迭代法求解线性方程组的求解库
+#include <unsupported/Eigen/IterativeSolvers>
 
 class Point
 {

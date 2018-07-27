@@ -872,6 +872,12 @@ void Matrix::GaussSeidel(std::vector<std::vector<double> > &A_matrix, std::vecto
 
 void Matrix::SolveLinearA(std::vector<std::vector<double>>& A_matrix, std::vector<double>& u, std::vector<double>& rhs, int k)
 {
+    // 迭代算法声明
+    Eigen::ConjugateGradient<Eigen::MatrixXd, Eigen::Lower|Eigen::Upper, Eigen::IdentityPreconditioner> cg;
+    Eigen::BiCGSTAB<Eigen::MatrixXd, Eigen::IdentityPreconditioner> bicg;
+    Eigen::GMRES<Eigen::MatrixXd, Eigen::IdentityPreconditioner> gmres;
+    Eigen::DGMRES<Eigen::MatrixXd, Eigen::IdentityPreconditioner> dgmres;
+    Eigen::MINRES<Eigen::MatrixXd,Eigen::Lower|Eigen::Upper, Eigen::IdentityPreconditioner> minres;
 
     // 将vetcor<vector<double>>类型的数据容器转换到Matrix中
     auto A_size = A_matrix.size();
@@ -956,6 +962,41 @@ void Matrix::SolveLinearA(std::vector<std::vector<double>>& A_matrix, std::vecto
         // speed (large): +
         // accuracy: ++
             u_h_now = A.ldlt().solve(b);
+            break;
+        // 上面的都是直接求法,下面开始迭代求法
+        // CG法
+        case 10:
+            cg.compute(A);
+            u_h_now = cg.solve(b);
+            std::cout << "CG:\t #iterator: " << cg.iterations() << ", estimate error: " << cg.error() << std::endl;
+            break;
+        // bicg法
+        case 11:
+            bicg.compute(A);
+            u_h_now = bicg.solve(b);
+            std::cout << "BiCGSTAB:\t #iterator: " << bicg.iterations() << ", estimate error: "
+                    << bicg.error() << std::endl;
+            break;
+        // gmres
+        case 12:
+            gmres.compute(A);
+            u_h_now = gmres.solve(b);
+            std::cout << "GMRES:\t #iterator: " << gmres.iterations() << ", estimate error: "
+                    << gmres.error() << std::endl;
+            break;
+        // DGMRES
+        case 13:
+            dgmres.compute(A);
+            u_h_now = dgmres.solve(b);
+            std::cout << "DGMRES:\t #iterator: " << dgmres.iterations() << ", estimate error: "
+                    << dgmres.error() << std::endl;
+            break;
+        // minres
+        case 14:
+            minres.compute(A);
+            u_h_now = minres.solve(b);
+            std::cout << "MINRES:\t #iterator: " << minres.iterations() << ", estimate error: "
+                    << minres.error() << std::endl;
             break;
     }
     // 将求解结果存储到u中

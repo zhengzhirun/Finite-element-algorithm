@@ -20,7 +20,9 @@ int main()
 	Possion.DealBoundary(A_matrix, Possion.u_h, Rhs);  // 边界处理
 
 	//Possion.GaussSeidel(A_matrix,Possion.u_h, Rhs);  // 高斯赛德尔迭代
-    Possion.SolveLinearA(A_matrix,Possion.u_h,Rhs,8);
+    // k可以取1到14,取整数,每一个数字对应一种计算方法,
+    // 1--9 为直接解法; 10--14为迭代解法;GMRES,case12 优先选择
+    Possion.SolveLinearA(A_matrix,Possion.u_h,Rhs,12);
 
 
 	double L2Error=Possion.ComputerL2Error(Possion.u_h);  // 求解L2误差
