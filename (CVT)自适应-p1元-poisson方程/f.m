@@ -1,0 +1,6 @@
+function z = f(p)   
+% 右端项f
+z = -2 .* pi.^2 .* exp(pi .* (p(:,1) + p(:,2)))...
+    .* ( sin(pi.* p(:,1)).* cos(pi.* p(:,2))...
+    + cos(pi.* p(:,1)) .* sin(pi.* p(:,2)) );
+end
