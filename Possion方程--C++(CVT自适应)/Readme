@@ -10,3 +10,5 @@ g++ -std=c++0x CVT_Adaptive_finite.o MAtrix.o density.o Possion.o -o CVT_Adaptiv
 运行成功后,会将计算结果存储在Results.txt中,网格信息存储在Trimesh.txt中
 
 最后运行 show_solution.m(读取数据文件Trimesh.txt,Results.txt,L2Error.txt并作图).
+
+在编译调试的时候写了一个简单的Ｍａｋｅｆｉｌｅ，可以使用．
