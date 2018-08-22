@@ -1,3 +1,5 @@
+all: CVT_Adaptive_finite
+
 CVT_Adaptive_finite: CVT_Adaptive_finite.o Possion.o Matrix.o density.o
 	g++ -std=c++0x -o CVT_Adaptive_finite CVT_Adaptive_finite.o Possion.o Matrix.o density.o
 
