@@ -1,0 +1,12 @@
+根据Trangle中的准则(参见MESHGEN包readme的参考文献),写入初始网格信息存储在square.poly文件中
+
+然后编译C++文件:
+g++ -std=c++0x -c Matrix.cpp
+g++ -std=c++0x -c density.cpp
+g++ -std=c++0x -c Possion.cpp
+g++ -std=c++0x -c CVT_Adaptive_finite.cpp
+g++ -std=c++0x CVT_Adaptive_finite.o MAtrix.o density.o Possion.o -o CVT_Adaptive_finite
+./CVT_Adaptive_finite
+运行成功后,会将计算结果存储在Results.txt中,网格信息存储在Trimesh.txt中
+
+最后运行 show_solution.m(读取数据文件Trimesh.txt,Results.txt,L2Error.txt并作图).
