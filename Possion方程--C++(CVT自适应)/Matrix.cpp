@@ -1366,11 +1366,9 @@ void Matrix::Estimateresidual(std::vector<double>& u_h,std::vector<double>& eta)
         EP[1] = mesh.getPnt(EV[1]);
         EP[2] = mesh.getPnt(EV[2]);
 
-        edgeJump[i] = pow(((Du[i][0] - Du[index_0][0]) * ne[i][0][0] + (Du[i][1] - Du[index_0][1]) * ne[i][1][0]),2.0) *
-            distance(EP[1],EP[2]) +  pow(((Du[i][0] - Du[index_1][0]) * ne[i][0][1] + (Du[i][1] - Du[index_1][1]) * 
-            ne[i][1][1]),2.0) * distance(EP[0],EP[2]) + 
-            pow(((Du[i][0] - Du[index_2][0]) * ne[i][0][2] + (Du[i][1] - Du[index_2][1]) * ne[i][1][2]),2.0) *
-            distance(EP[0],EP[1]);
+        edgeJump[i] = pow(((Du[i][0] - Du[index_0][0]) * ne[i][0][0] + (Du[i][1] - Du[index_0][1]) * ne[i][1][0]),2.0) 
+            +  pow(((Du[i][0] - Du[index_1][0]) * ne[i][0][1] + (Du[i][1] - Du[index_1][1]) * ne[i][1][1]),2.0)  + 
+            pow(((Du[i][0] - Du[index_2][0]) * ne[i][0][2] + (Du[i][1] - Du[index_2][1]) * ne[i][1][2]),2.0);
     }
     // 初始化
     eta.resize(n_ele);
